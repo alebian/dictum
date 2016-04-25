@@ -6,33 +6,27 @@ module Dictum
     PRETTIFY = 'https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js'.freeze
 
     class << self
-      def html_header(title)
-        "<!DOCTYPE html>\n<html>\n<head>\n<title>#{title}</title>\n#{external_css(BOOTSTRAP_CSS)}"\
-        "\n<style>\n#{page_css}\n</style>\n</head>\n<body>\n"
+      def build
+        yield self
       end
 
-      def html_footer
+      def html_header(title, body_content)
+        "<!DOCTYPE html>\n<html>\n<head>\n<title>#{title}</title>\n#{external_css(BOOTSTRAP_CSS)}"\
+        "\n<style>\n#{page_css}\n</style>\n</head>\n<body>\n#{body_content}" \
         "#{script(JQUERY)}\n#{script(BOOTSTRAP_JS)}\n#{script(PRETTIFY)}\n</body>\n</html>"
+      end
+
+      def container(content)
+        "<div class='container-fluid'>\n#{content}\n</div>"
+      end
+
+      def row(content)
+        "<div class='row'>\n<div class='col-md-8 col-md-offset-2'>\n" \
+        "#{content}\n</div>\n</div>"
       end
 
       def page_css
         ''
-      end
-
-      def container
-        "<div class='container-fluid'>\n"
-      end
-
-      def container_end
-        '</div>'
-      end
-
-      def row
-        "<div class='row'>\n<div class='col-md-8 col-md-offset-2'>\n"
-      end
-
-      def row_end
-        "</div>\n</div>"
       end
 
       def script(script_path)
