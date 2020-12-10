@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '>= 1.3.0', '< 3.0'
   spec.add_development_dependency 'rspec', '~> 3.4', '>= 3.4.0'
   spec.add_development_dependency 'byebug', '>= 8.0.0', '~> 11.1' if RUBY_VERSION >= '2.0.0'
-  spec.add_development_dependency 'rubocop', '~> 0.48', '>= 0.48.0'
+  spec.add_development_dependency 'rubocop', '>= 0.48.0', '~> 1.6'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.0'
   spec.add_development_dependency 'simplecov'
 end
